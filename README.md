@@ -38,6 +38,7 @@ Find your use case below and install the corresponding skill:
 | Set up **data observability** — freshness monitoring, alerting, incident response | [data-observability](data-observability/) | Available |
 | Work with **Azure Data Factory, Synapse, Fabric, or SQL Server** | [microsoft-data-stack](microsoft-data-stack/) | Available |
 | Migrate **SSIS packages** to modern ETL (ADF, dbt, dlt) | [microsoft-data-stack](microsoft-data-stack/) | Available |
+| Build, tune, and benchmark **Databricks Genie Agents** (formerly Genie spaces) | [databricks-genie](databricks-genie/) | Available |
 | Choose between **Snowflake, BigQuery, Databricks, DuckDB, Synapse, or SQL Server** | [shared-references/warehouse-comparison](shared-references/data-engineering/warehouse-comparison.md) | Available |
 | Implement **data quality checks** (freshness, completeness, accuracy) | [shared-references/data-quality-patterns](shared-references/data-engineering/data-quality-patterns.md) | Available |
 
@@ -169,6 +170,7 @@ Skills are **prompt templates** that give Claude deep domain knowledge. Here's h
 | [data-governance](data-governance/) | Data cataloging, lineage, classification, access control, compliance | 1,110 | 8 |
 | [data-observability](data-observability/) | Freshness monitoring, volume anomaly detection, alerting, incident response | 1,160 | 8 |
 | [microsoft-data-stack](microsoft-data-stack/) | ADF orchestration, Synapse/Fabric lakehouse, SQL Server CDC, SSIS migration, dbt-sqlserver | 1,200 | 4 |
+| [databricks-genie](databricks-genie/) | Genie Agent scoping, knowledge store curation, benchmarks and accuracy triage, Conversation API, bundles | 490 | 4 |
 
 ### Shared References
 

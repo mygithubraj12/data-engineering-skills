@@ -1,0 +1,11 @@
+{
+  "skill": "databricks-genie",
+  "cases": [
+    {"id": "01-scope-new-agent", "name": "Scope a new sales agent", "tier": 1, "input": {}, "file": "cases/01-scope-new-agent.md"},
+    {"id": "02-define-metric", "name": "Fix inconsistent revenue", "tier": 2, "input": {}, "file": "cases/02-define-metric.md"},
+    {"id": "03-benchmark-set", "name": "Build a benchmark set", "tier": 2, "input": {}, "file": "cases/03-benchmark-set.md"},
+    {"id": "04-triage-results", "name": "Triage a failing benchmark run", "tier": 3, "input": {}, "file": "cases/04-triage-results.md"},
+    {"id": "05-api-client", "name": "Python client for a Genie Agent", "tier": 2, "input": {}, "file": "cases/05-api-client.md"},
+    {"id": "06-deploy-bundle", "name": "Promote an agent with bundles", "tier": 3, "input": {}, "file": "cases/06-deploy-bundle.md"}
+  ]
+}

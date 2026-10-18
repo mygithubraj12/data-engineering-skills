@@ -55,8 +55,9 @@
 |-------|------|-------------|--------|
 | [ai-data-integration](ai-data-integration/) | Standalone | MCP server patterns for warehouses, NL-to-SQL, embeddings pipelines, LLM-powered transformations, progressive AI integration with security tiers | **Available** |
 | [tsfm-forecast](tsfm-forecast/) | Standalone | Zero-shot time-series forecasting pipelines using TimesFM, Chronos, MOIRAI, and Lag-Llama; DuckDB-based data preparation, backtesting harnesses, multi-model comparison, client forecast deliverables | **Available** |
+| [databricks-genie](databricks-genie/) | Standalone | Databricks AI/BI Genie Agents (formerly Genie spaces) — scoping, Unity Catalog data prep, knowledge store and example SQL curation, benchmark design and accuracy triage, Conversation and Management APIs, bundle deployment | **Available** |
 
-**Use when**: Building MCP servers for data tools, implementing NL-to-SQL, using LLMs for data enrichment, designing AI-data interaction patterns, generating time-series forecasting pipelines with foundation models.
+**Use when**: Building MCP servers for data tools, implementing NL-to-SQL, using LLMs for data enrichment, designing AI-data interaction patterns, generating time-series forecasting pipelines with foundation models, building and benchmarking Databricks Genie Agents.
 
 ### Data Quality & Governance
 
