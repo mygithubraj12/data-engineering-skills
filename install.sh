@@ -32,6 +32,7 @@ ALL_SKILLS=(
   "data-governance"
   "data-observability"
   "microsoft-data-stack"
+  "databricks-genie"
 )
 
 # All skills are now available
@@ -50,6 +51,7 @@ AVAILABLE_SKILLS=(
   "data-governance"
   "data-observability"
   "microsoft-data-stack"
+  "databricks-genie"
 )
 
 # Role-based presets (bash 3.2 compatible — no associative arrays)
@@ -58,7 +60,7 @@ ALL_ROLES="analytics-engineer data-platform-engineer integration-engineer ml-eng
 get_role_skills() {
   case "$1" in
     analytics-engineer)       echo "dbt-transforms,python-data-engineering" ;;
-    data-platform-engineer)   echo "dbt-transforms,data-integration,event-streaming,data-pipelines,python-data-engineering,ai-data-integration,duckdb,client-delivery,dlt-extract,tsfm-forecast,data-testing,data-governance,data-observability,microsoft-data-stack" ;;
+    data-platform-engineer)   echo "dbt-transforms,data-integration,event-streaming,data-pipelines,python-data-engineering,ai-data-integration,duckdb,client-delivery,dlt-extract,tsfm-forecast,data-testing,data-governance,data-observability,microsoft-data-stack,databricks-genie" ;;
     integration-engineer)     echo "data-integration,event-streaming,data-pipelines" ;;
     ml-engineer)              echo "python-data-engineering,ai-data-integration,tsfm-forecast" ;;
     data-consultant)          echo "dbt-transforms,duckdb,client-delivery,dlt-extract,data-pipelines,data-testing" ;;
@@ -103,7 +105,7 @@ OPTIONS:
 
 ROLES:
   analytics-engineer       dbt-transforms, python-data-engineering
-  data-platform-engineer   All 14 skills (full toolkit)
+  data-platform-engineer   All 15 skills (full toolkit)
   integration-engineer     data-integration, event-streaming, data-pipelines
   ml-engineer              python-data-engineering, ai-data-integration, tsfm-forecast
   data-consultant          dbt-transforms, duckdb, client-delivery, dlt-extract, data-pipelines, data-testing
@@ -360,6 +362,7 @@ echo "  - data-testing: data testing strategy, pipeline validation, SQL assertio
 echo "  - data-governance: data catalog, data lineage, PII classification, RBAC, access control, compliance"
 echo "  - data-observability: data freshness, pipeline monitoring, schema drift, data alerting, incident response"
 echo "  - microsoft-data-stack: ADF, Azure Synapse, Fabric, SQL Server CDC, SSIS migration, ADLS Gen2, dbt-sqlserver"
+echo "  - databricks-genie: Genie Agent design, knowledge store curation, benchmarks, Conversation API, bundle deployment"
 echo ""
 info "Next steps:"
 echo "  1. Start a new conversation in Claude Code"

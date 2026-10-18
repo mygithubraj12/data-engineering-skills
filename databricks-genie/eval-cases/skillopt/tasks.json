@@ -1,0 +1,854 @@
+{
+  "format": "skillopt_sleep.tasks.v1",
+  "project": "data-engineering-skills",
+  "transcript_source": "hand-authored",
+  "n_sessions": 0,
+  "target_skill_path": "databricks-genie/SKILL.md",
+  "reviewed": false,
+  "tasks": [
+    {
+      "id": "genie-scope-tables",
+      "project": "data-engineering-skills",
+      "intent": "I want one Genie space for sales, finance, and HR with about 40 tables. How should I set it up?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)(separate|split|multiple|one (agent|space) per)",
+            "description": "Recommend splitting a multi-domain request into focused agents with one audience each."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)(five|5) or fewer",
+            "description": "Recommend five or fewer tables per agent, as Databricks advises."
+          },
+          {
+            "op": "contains",
+            "arg": "50",
+            "description": "Mention the 50 tables/views/metric views hard limit."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "design"
+      ],
+      "split": "train",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-prereqs",
+      "project": "data-engineering-skills",
+      "intent": "What do I need in place before business users can use a Genie agent on our Unity Catalog data?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)(pro|serverless)\\s+(or\\s+serverless\\s+)?SQL warehouse|pro or serverless",
+            "description": "State that a pro or serverless SQL warehouse is required."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)\\bSELECT\\b",
+            "description": "State that users need SELECT on the Unity Catalog objects the agent uses."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)unity catalog",
+            "description": "State that data must be registered in Unity Catalog."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "design"
+      ],
+      "split": "train",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-metric-def",
+      "project": "data-engineering-skills",
+      "intent": "Genie computes 'active customers' differently each time. Where should I define it?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)sql expression|measure|filter",
+            "description": "Define business terms as SQL expressions (measure or filter) in the knowledge store."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)last resort|instead of (a )?text|not (in|as) (a )?text instruction",
+            "description": "Explain that text instructions are a last resort for metric definitions."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "tune"
+      ],
+      "split": "train",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-example-sql-title",
+      "project": "data-engineering-skills",
+      "intent": "How should I write example SQL queries for my Genie agent so it reuses them?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)(typical|common|natural) (phrasing|question|wording)",
+            "description": "Title each example with the most typical phrasing of the user question."
+          },
+          {
+            "op": "regex",
+            "arg": ":[a-z_]+",
+            "description": "Show a parameterized query using :parameter_name syntax."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)trusted asset|verified",
+            "description": "Explain that parameterized examples become trusted assets with verified answers."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "tune"
+      ],
+      "split": "train",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-clarify-instr",
+      "project": "data-engineering-skills",
+      "intent": "Make my Genie agent ask a follow-up when someone asks about pipeline without saying which region.",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)trigger",
+            "description": "Structure the clarification rule with a trigger condition."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)must ask",
+            "description": "State the required action explicitly, e.g. 'you must ask a clarification question'."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)end of (the|your)? ?(general )?instructions",
+            "description": "Place clarification rules at the end of the general instructions."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "tune"
+      ],
+      "split": "train",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-summary-heading",
+      "project": "data-engineering-skills",
+      "intent": "How do I make Genie summaries always state the date range of the results?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "contains",
+            "arg": "Instructions you must follow when providing summaries",
+            "description": "Use the exact summary section heading Databricks documents."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)only text instructions|SQL (examples|expressions) (do not|don't) (affect|influence)",
+            "description": "Explain that only text instructions affect summaries."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "tune"
+      ],
+      "split": "train",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-entity-matching-masked",
+      "project": "data-engineering-skills",
+      "intent": "Should I turn on entity matching for the customer_name column? It has a column mask.",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)(masked|mask).{0,80}(excluded|not (supported|used|eligible)|disable)",
+            "description": "Explain masked columns and row-filtered tables are excluded from prompt matching."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)disable",
+            "description": "Advise disabling entity matching on views over masked or filtered data."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "tune",
+        "security"
+      ],
+      "split": "train",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-conflict",
+      "project": "data-engineering-skills",
+      "intent": "My text instructions round money to 2 decimals but some example SQL uses ROUND(x, 0). Does it matter?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)conflict|inconsisten",
+            "description": "Identify this as conflicting guidance across instruction types."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)(update|align|change|fix).{0,40}(example|SQL)",
+            "description": "Recommend aligning the example SQL with the text instruction."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "tune"
+      ],
+      "split": "train",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-benchmark-phrasings",
+      "project": "data-engineering-skills",
+      "intent": "How many ways should I phrase each benchmark question in Genie?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)(two|2)\\s*(to|-|–)\\s*(four|4)",
+            "description": "Recommend two to four phrasings per question."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)same SQL( Answer)?",
+            "description": "Use the same SQL Answer for each phrasing."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "evaluate"
+      ],
+      "split": "train",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-benchmark-rows",
+      "project": "data-engineering-skills",
+      "intent": "My benchmark SQL answer returns 20,000 rows and keeps getting rated Bad even though Genie looks right.",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "contains",
+            "arg": "5,000",
+            "description": "Explain Chat mode compares up to 5,000 rows."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)ORDER BY",
+            "description": "Recommend ORDER BY or a smaller result set."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "evaluate"
+      ],
+      "split": "train",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-extra-columns",
+      "project": "data-engineering-skills",
+      "intent": "Genie returns the right revenue numbers plus a few extra columns, and the benchmark says Bad. Why?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)extra columns?.{0,60}bad|bad.{0,60}extra columns?",
+            "description": "Explain that extra columns versus the SQL Answer rate Bad."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)example SQL|projection|only the (requested|needed) columns",
+            "description": "Recommend an example SQL query showing the expected columns."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "evaluate"
+      ],
+      "split": "train",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-api-polling",
+      "project": "data-engineering-skills",
+      "intent": "Write guidance for polling the Genie Conversation API from our backend.",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)(1|one)\\s*(to|-|–)\\s*(5|five) seconds",
+            "description": "Poll every 1 to 5 seconds."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)backoff",
+            "description": "Use exponential backoff."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)10 minutes",
+            "description": "Stop polling after 10 minutes."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)COMPLETED.{0,60}FAILED|FAILED.{0,60}COMPLETED",
+            "description": "Name the terminal statuses."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "integrate"
+      ],
+      "split": "train",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-api-client-auth",
+      "project": "data-engineering-skills",
+      "intent": "Give me Python code that asks our Genie space a question and prints the SQL.",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "WorkspaceClient\\(",
+            "description": "Use the Databricks SDK WorkspaceClient with unified auth."
+          },
+          {
+            "op": "contains",
+            "arg": "start_conversation_and_wait",
+            "description": "Use the documented start_conversation_and_wait SDK method."
+          },
+          {
+            "op": "not_contains",
+            "arg": "dapi",
+            "description": "Never include a personal access token or token literal in generated code."
+          },
+          {
+            "op": "not_contains",
+            "arg": "token=",
+            "description": "Do not pass a token literal to the client."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "integrate",
+        "security"
+      ],
+      "split": "train",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-rename",
+      "project": "data-engineering-skills",
+      "intent": "Is a Genie Agent different from a Genie space? Our docs mention both.",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)(renamed|formerly|same (product|thing|capabilit))",
+            "description": "Explain Genie spaces were renamed to Genie Agents with unchanged capabilities."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)space_id|/genie/spaces|genie_spaces",
+            "description": "Note that APIs and bundles still use space naming."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "design"
+      ],
+      "split": "train",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-join-dupes",
+      "project": "data-engineering-skills",
+      "intent": "Genie double counts revenue when it joins orders to products. How do I fix that?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)primary key|foreign key|PK|FK",
+            "description": "Declare primary and foreign keys in Unity Catalog so joins are saved automatically."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)join relationship|cardinality|many to one|many-to-one",
+            "description": "Or define a join relationship with the correct cardinality."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "tune"
+      ],
+      "split": "val",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-instruction-limit",
+      "project": "data-engineering-skills",
+      "intent": "How many example queries and instructions can a Genie agent hold?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "contains",
+            "arg": "100",
+            "description": "State the 100 instructions per agent limit."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)(each|every) example",
+            "description": "Explain each example SQL query counts as one instruction."
+          },
+          {
+            "op": "contains",
+            "arg": "200",
+            "description": "Mention the separate 200 knowledge store snippet limit."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "tune"
+      ],
+      "split": "val",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-eval-mode",
+      "project": "data-engineering-skills",
+      "intent": "What is the difference between Chat and Agent mode when running Genie benchmarks?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)(compar|match).{0,60}SQL Answer",
+            "description": "Chat mode compares results against the SQL Answer."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)LLM judge",
+            "description": "Agent mode is graded by an LLM judge."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)per run|when you run|for (a|each) run",
+            "description": "The mode is selected per run, not per question."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "evaluate"
+      ],
+      "split": "val",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-new-conversation",
+      "project": "data-engineering-skills",
+      "intent": "Should our chatbot reuse one Genie conversation for all users to save calls?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)new conversation (per|for each) (user )?session|start a new conversation",
+            "description": "Start a new conversation per session."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)accura",
+            "description": "Explain that reusing threads reduces accuracy."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "integrate"
+      ],
+      "split": "val",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-bundle-bind",
+      "project": "data-engineering-skills",
+      "intent": "I exported my Genie agent with bundle generate and deployed it to prod. Now there are two agents. What happened?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)\\bbind\\b",
+            "description": "Explain that deploying without binding creates a new resource; bind first."
+          },
+          {
+            "op": "contains",
+            "arg": "genie_spaces",
+            "description": "Reference the genie_spaces bundle resource."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "integrate"
+      ],
+      "split": "val",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-too-many-columns",
+      "project": "data-engineering-skills",
+      "intent": "Genie warns that my agent is near its token limit. What should I do?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)hide|remove.{0,30}columns|narrow(er)? view",
+            "description": "Hide unneeded columns or expose a narrower view."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)(prune|remove).{0,40}(example|redundant|overlapping)",
+            "description": "Prune overlapping example SQL."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)descriptions?",
+            "description": "Remove descriptions that restate column names."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "tune"
+      ],
+      "split": "test",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-relative-dates",
+      "project": "data-engineering-skills",
+      "intent": "My Genie benchmark 'revenue last quarter' passed in July but fails in October. Nothing changed in the agent.",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)(relative|last quarter).{0,80}(fixed|pin|literal|hard-?code)|(fixed|pin|literal).{0,80}date",
+            "description": "Pin relative dates in SQL Answers to fixed values so ground truth does not drift."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "evaluate"
+      ],
+      "split": "test",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-empty-for-some",
+      "project": "data-engineering-skills",
+      "intent": "Some users get empty answers from our Genie agent while I get results for the same question.",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)row filter|column mask|permission|SELECT",
+            "description": "Explain data access runs as the end user, so row filters and permissions apply per user."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)end user|each user|per user|their own",
+            "description": "State that queries run with the end user's identity."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "security"
+      ],
+      "split": "test",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-custom-vs-genie",
+      "project": "data-engineering-skills",
+      "intent": "Should we build our own LLM text-to-SQL service on Databricks or use Genie?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)genie (agent|space)",
+            "description": "Recommend evaluating a Genie Agent first on Databricks."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)benchmark",
+            "description": "Recommend proving accuracy with benchmarks before deciding."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "design"
+      ],
+      "split": "test",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    },
+    {
+      "id": "genie-mcp-sunset",
+      "project": "data-engineering-skills",
+      "intent": "We call Genie from an agent through /api/2.0/mcp/genie. Anything we should know?",
+      "context_excerpt": "",
+      "reference_kind": "rule",
+      "judge": {
+        "kind": "rule",
+        "checks": [
+          {
+            "op": "regex",
+            "arg": "(?i)deprecat|sunset",
+            "description": "Flag the beta endpoint as deprecated with a sunset."
+          },
+          {
+            "op": "regex",
+            "arg": "(?i)/api/2\\.0/mcp/genie/\\{?[a-z_]*\\}?|per-agent|genie one",
+            "description": "Point to the per-agent MCP URL or Genie One MCP."
+          },
+          {
+            "op": "no_refusal",
+            "description": "Answer the question instead of declining."
+          }
+        ]
+      },
+      "tags": [
+        "databricks-genie",
+        "integrate"
+      ],
+      "split": "test",
+      "origin": "real",
+      "skill_hint": "databricks-genie"
+    }
+  ]
+}
