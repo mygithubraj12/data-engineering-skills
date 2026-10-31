@@ -38,6 +38,13 @@ Find your use case below and install the corresponding skill:
 | Set up **data observability** — freshness monitoring, alerting, incident response | [data-observability](data-observability/) | Available |
 | Work with **Azure Data Factory, Synapse, Fabric, or SQL Server** | [microsoft-data-stack](microsoft-data-stack/) | Available |
 | Migrate **SSIS packages** to modern ETL (ADF, dbt, dlt) | [microsoft-data-stack](microsoft-data-stack/) | Available |
+| **Automate a recurring multi-step task** as a re-runnable workflow | [automation-master](automation-master/) | Available |
+| **Bulk rename or organize files** safely with dry run and undo | [file-automation](file-automation/) | Available |
+| **Extract data from a web page** or automate a web form | [browser-automation](browser-automation/) | Available |
+| **Clean a messy spreadsheet** and report trends | [data-analysis](data-analysis/) | Available |
+| Turn an idea into a **design brief** | [design-automation](design-automation/) | Available |
+| **Research a topic with verified sources** | [research-agent](research-agent/) | Available |
+| **Summarize email threads** and draft replies | [email-automation](email-automation/) | Available |
 | Choose between **Snowflake, BigQuery, Databricks, DuckDB, Synapse, or SQL Server** | [shared-references/warehouse-comparison](shared-references/data-engineering/warehouse-comparison.md) | Available |
 | Implement **data quality checks** (freshness, completeness, accuracy) | [shared-references/data-quality-patterns](shared-references/data-engineering/data-quality-patterns.md) | Available |
 
@@ -118,6 +125,7 @@ Not sure which skills to install? We've created presets for common roles:
 | **ml-engineer** | python-data-engineering, ai-data-integration, tsfm-forecast | Python-first workflows, AI/ML pipelines, time-series forecasting |
 | **data-consultant** | dbt-transforms, duckdb, client-delivery, dlt-extract, data-pipelines, data-testing | End-to-end data cleaning engagements |
 | **microsoft-data-engineer** | microsoft-data-stack, data-pipelines, data-governance, dbt-transforms, data-observability | Azure/SQL Server data platform engineering |
+| **productivity** | automation-master, file-automation, browser-automation, data-analysis, design-automation, research-agent, email-automation | General automation, research, and communication tasks |
 
 **Example**:
 ```bash
@@ -169,6 +177,13 @@ Skills are **prompt templates** that give Claude deep domain knowledge. Here's h
 | [data-governance](data-governance/) | Data cataloging, lineage, classification, access control, compliance | 1,110 | 8 |
 | [data-observability](data-observability/) | Freshness monitoring, volume anomaly detection, alerting, incident response | 1,160 | 8 |
 | [microsoft-data-stack](microsoft-data-stack/) | ADF orchestration, Synapse/Fabric lakehouse, SQL Server CDC, SSIS migration, dbt-sqlserver | 1,200 | 4 |
+| [automation-master](automation-master/) | Recurring task decomposition into re-runnable workflows | ~90 | 2 |
+| [file-automation](file-automation/) | Bulk rename/sort/organize with manifest, dry run, undo | ~90 | 2 |
+| [browser-automation](browser-automation/) | Web navigation, form filling, data extraction (browser tool or Playwright) | ~95 | 2 |
+| [data-analysis](data-analysis/) | Spreadsheet cleaning, trend analysis, findings reports | ~90 | 2 |
+| [design-automation](design-automation/) | Design briefs: dimensions, typography, color, layout, assets | ~85 | 2 |
+| [research-agent](research-agent/) | Sourced research with Verified/Recalled/Unresolved labels | ~85 | 2 |
+| [email-automation](email-automation/) | Thread summaries, reply drafts, templates with send approval | ~85 | 2 |
 
 ### Shared References
 

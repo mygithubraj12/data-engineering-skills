@@ -78,6 +78,20 @@
 
 **Use when**: Running data cleaning engagements, profiling client data locally with DuckDB, building portable DLT pipelines for file sources, generating client deliverables.
 
+### General Automation & Productivity
+
+| Skill | Type | Description | Status |
+|-------|------|-------------|--------|
+| [automation-master](automation-master/) | Standalone | Decomposes recurring multi-step tasks into re-runnable workflows with validation gates and approval steps | **Available** |
+| [file-automation](file-automation/) | Standalone | Bulk rename, sort, and organize files via a reviewed manifest, dry run, and undo log | **Available** |
+| [browser-automation](browser-automation/) | Standalone | Web navigation, form filling, and page data extraction via a browser tool or Playwright script | **Available** |
+| [data-analysis](data-analysis/) | Standalone | Spreadsheet cleaning with audit log, trend analysis, and evidence-vs-interpretation reports | **Available** |
+| [design-automation](design-automation/) | Standalone | Design briefs: dimensions, typography, color (WCAG contrast), layout, asset lists | **Available** |
+| [research-agent](research-agent/) | Standalone | Sourced research with every claim labeled Verified / Recalled / Unresolved | **Available** |
+| [email-automation](email-automation/) | Standalone | Thread summaries, reply drafts, and templates; human approval before any send | **Available** |
+
+**Use when**: Systematizing repetitive work, organizing files, extracting data from web UIs, analyzing ad-hoc spreadsheets, briefing designers, researching with citations, handling email.
+
 ---
 
 ## Shared References
