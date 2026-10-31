@@ -32,6 +32,13 @@ ALL_SKILLS=(
   "data-governance"
   "data-observability"
   "microsoft-data-stack"
+  "automation-master"
+  "file-automation"
+  "browser-automation"
+  "data-analysis"
+  "design-automation"
+  "research-agent"
+  "email-automation"
 )
 
 # All skills are now available
@@ -50,10 +57,17 @@ AVAILABLE_SKILLS=(
   "data-governance"
   "data-observability"
   "microsoft-data-stack"
+  "automation-master"
+  "file-automation"
+  "browser-automation"
+  "data-analysis"
+  "design-automation"
+  "research-agent"
+  "email-automation"
 )
 
 # Role-based presets (bash 3.2 compatible — no associative arrays)
-ALL_ROLES="analytics-engineer data-platform-engineer integration-engineer ml-engineer data-consultant microsoft-data-engineer"
+ALL_ROLES="analytics-engineer data-platform-engineer integration-engineer ml-engineer data-consultant microsoft-data-engineer productivity"
 
 get_role_skills() {
   case "$1" in
@@ -63,6 +77,7 @@ get_role_skills() {
     ml-engineer)              echo "python-data-engineering,ai-data-integration,tsfm-forecast" ;;
     data-consultant)          echo "dbt-transforms,duckdb,client-delivery,dlt-extract,data-pipelines,data-testing" ;;
     microsoft-data-engineer)  echo "microsoft-data-stack,data-pipelines,data-governance,dbt-transforms,data-observability" ;;
+    productivity)             echo "automation-master,file-automation,browser-automation,data-analysis,design-automation,research-agent,email-automation" ;;
     *)                        echo "" ;;
   esac
 }
@@ -108,6 +123,7 @@ ROLES:
   ml-engineer              python-data-engineering, ai-data-integration, tsfm-forecast
   data-consultant          dbt-transforms, duckdb, client-delivery, dlt-extract, data-pipelines, data-testing
   microsoft-data-engineer  microsoft-data-stack, data-pipelines, data-governance, dbt-transforms, data-observability
+  productivity             automation-master, file-automation, browser-automation, data-analysis, design-automation, research-agent, email-automation
 
 EXAMPLES:
   ./install.sh
@@ -360,6 +376,13 @@ echo "  - data-testing: data testing strategy, pipeline validation, SQL assertio
 echo "  - data-governance: data catalog, data lineage, PII classification, RBAC, access control, compliance"
 echo "  - data-observability: data freshness, pipeline monitoring, schema drift, data alerting, incident response"
 echo "  - microsoft-data-stack: ADF, Azure Synapse, Fabric, SQL Server CDC, SSIS migration, ADLS Gen2, dbt-sqlserver"
+echo "  - automation-master: break recurring tasks into re-runnable workflows"
+echo "  - file-automation: bulk rename, sort, organize files with dry run and undo"
+echo "  - browser-automation: web navigation, form filling, page data extraction"
+echo "  - data-analysis: spreadsheet cleaning, trend analysis, findings reports"
+echo "  - design-automation: design briefs (dimensions, type, color, layout, assets)"
+echo "  - research-agent: sourced research with verified/recalled labels"
+echo "  - email-automation: thread summaries, reply drafts, templates"
 echo ""
 info "Next steps:"
 echo "  1. Start a new conversation in Claude Code"
